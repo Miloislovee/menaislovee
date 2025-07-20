@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ipodmenaa</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Angelia+Beauty&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="cancioness.css">
+
+  <!-- Estilos internos -->
+  <style>
+    .btn-back {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #8B4513;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-family: 'Angelia Beauty', cursive;
+      font-size: 14px;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+      transition: .3s;
+      z-index: 1000;
+    }
+
+    .btn-back:hover {
+      background: #a0522d;
+    }
+
+    .player-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .social-buttons a {
+      display: block;
+    }
+
+    .social-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 0 8px rgba(0, 0, 0, .6);
+      transition: transform .3s;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.1);
+    }
+
+    /* Opcional: para que el corazón blanco no desaparezca en fondo claro */
+    .heart svg[fill="white"] {
+      filter: drop-shadow(0 0 2px #000);
+    }
+  </style>
+</head>
+<body>
+
+  <a href="amor.html" class="btn-back">⬅ Volver</a>
+
+  <video autoplay muted loop playsinline id="video-fondo">
+    <source src="video/peyy.mp4" type="video/mp4">
+    Tu navegador no soporta video MP4.
+  </video>
+
+  <div class="wrapper">
+    <div class="panel">
+      <h2>𝘼𝙢𝙖𝙧𝙩𝙚 𝙨𝙪𝙚𝙣𝙖 𝙘𝙤𝙢𝙤 𝙩𝙤𝙙𝙤 𝙚𝙨𝙩𝙤</h2>
+
+      <div class="player-wrapper">
+        <div class="player">
+          <div class="top-buttons">
+            <!-- 🤍 Corazón blanco -->
+            <div class="top-btn heart">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+                         2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 
+                         4.5 2.09C13.09 3.81 14.76 3 16.5 3 
+                         19.58 3 22 5.42 22 8.5c0 3.78-3.4 
+                         6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+
+            <!-- 🖤 Corazón negro -->
+            <div class="top-btn heart">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+                         2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 
+                         4.5 2.09C13.09 3.81 14.76 3 16.5 3 
+                         19.58 3 22 5.42 22 8.5c0 3.78-3.4 
+                         6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="ipod-title">𝓜𝓮𝓷𝓪𝓪✭</div>
+
+          <div class="screen"><video id="videoPlayer"></video></div>
+
+          <div class="controls">
+            <button class="btn" onclick="prev()">◀</button>
+            <button class="btn main" id="playPauseBtn" onclick="togglePlay()">&#9658;</button>
+            <button class="btn" onclick="next()">▶</button>
+          </div>
+
+          <div class="song-title" id="song-title">Cargando...</div>
+        </div>
+
+        <div class="social-buttons">
+          <a href="https://acortar.link/veTRES" target="_blank"><img src="img/spoti.png" class="social-icon" alt="Spotify"></a>
+           <a href="https://goo.su/KaoOiz" target="_blank"><img src="img/aplee.png" class="social-icon" alt="applemusic"></a>
+          <a href="https://acortar.link/XzIGO5" target="_blank"><img src="img/ig.png" class="social-icon" alt="Instagram 1"></a>
+          <a href="https://goo.su/KuuF0" target="_blank"><img src="img/ig.png" class="social-icon" alt="Instagram 2"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🎥 Reproductor JS -->
+  <script>
+    const video = document.getElementById('videoPlayer');
+    const title = document.getElementById('song-title');
+    const btnPP = document.getElementById('playPauseBtn');
+
+ const playlist = [
+    'video/lolol/patatus.mp4', 'video/lolol/astros.mp4', 'video/lolol/bbyromeo.mp4',
+    'video/lolol/boboo.mp4', 'video/lolol/cirugiaa.mp4', 'video/lolol/clasicaa.mp4',
+    'video/lolol/cuento.mp4', 'video/lolol/cupids.mp4', 'video/lolol/entrecanivales.mp4',
+    'video/lolol/feelink.mp4', 'video/lolol/nightshift.mp4', 'video/lolol/niñoamor.mp4',
+    'video/lolol/ojitosdemd.mp4', 'video/lolol/ojoscanela.mp4', 'video/lolol/otroatardecer.mp4',
+    'video/lolol/paraisocorazon.mp4','video/lolol/altagama.mp4', 'video/lolol/sauce.mp4',
+    'video/lolol/spacesex.mp4', 'video/lolol/summertime.mp4', 'video/lolol/telepatia.mp4',
+    'video/lolol/tiempoo.mp4', 'video/lolol/tkm.mp4'
+  ];
+
+  const titles = [
+    'Patatús', 'Astros', 'BBY Romeo', 'BoboMensoTonto', 'Cirugía',
+    'Clásica', 'Cuento', 'Cupids', 'Entre Caníbales', 'Feeling Like The End',
+    'Nightshift', 'Niño Amor', 'Ojitos de MD', 'Ojos Canela', 'Otro Atardecer',
+    'Paraíso Corazón', 'Altagama', 'Sauce', 'Spacesex', 'Summertime',
+    'Telepatía', 'Tiempo Perfecto', 'TKM'
+  ];
+    let index = 0;
+    let isPlaying = false;
+
+    loadVid();
+
+    function togglePlay() {
+      isPlaying ? video.pause() : video.play();
+    }
+
+    const prev = () => {
+      index = (index - 1 + playlist.length) % playlist.length;
+      loadVid(true);
+    };
+
+    const next = () => {
+      index = (index + 1) % playlist.length;
+      loadVid(true);
+    };
+
+    function loadVid(auto = false) {
+      video.src = playlist[index];
+      title.textContent = titles[index];
+      if (auto || isPlaying) video.play();
+    }
+
+    video.addEventListener('play', () => {
+      isPlaying = true;
+      btnPP.innerHTML = '❚❚';
+    });
+
+    video.addEventListener('pause', () => {
+      isPlaying = false;
+      btnPP.innerHTML = '►';
+    });
+
+    video.addEventListener('ended', next);
+  </script>
+</body>
+</html>

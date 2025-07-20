@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>tkmm</title>
+  <link href="https://fonts.googleapis.com/css2?family=Angelia+Beauty&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Angelia Beauty', cursive;
+      color: white;
+      background-color: black;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* 🎥 VIDEO DE FONDO */
+    #video-fondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* 💖 BOTÓN CENTRAL */
+    .btn-img {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      outline: none;
+      position: relative;
+      z-index: 2;
+    }
+    .btn-img img {
+      width: 250px;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+    .btn-img:hover img {
+      transform: scale(1.05);
+    }
+    .centrado {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 🌠 IMAGEN FLOTANTE */
+    .imagen-flotante {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      max-width: 90vw;
+      max-height: 90vh;
+      z-index: 999;
+      animation: zoomIn 20s ease forwards;
+      pointer-events: none;
+    }
+    @keyframes zoomIn {
+      0%   { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+      5%   { opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+    }
+
+    /* 💓 CORAZONES – ahora duran 7 s */
+    .corazon {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      background: url('img/koraa.png') no-repeat center center/contain;
+      pointer-events: none;
+      animation: flotar 7s ease-in forwards;   /* ⬅️ aquí cambié 4s → 7s */
+      z-index: 10;
+    }
+    @keyframes flotar {
+      0%   { transform: translateY(0)     scale(1);   opacity: 1; }
+      100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+    }
+
+    /* 🔙 BOTÓN REGRESAR */
+    .btn-regreso {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: transparent;
+      color: white;
+      font-family: 'Angelia Beauty', cursive;
+      font-size: 20px;
+      padding: 10px 18px;
+      border: 2px solid white;
+      border-radius: 12px;
+      cursor: pointer;
+      z-index: 999;
+      opacity: 0.2;
+      transition: all 0.3s ease;
+    }
+    .btn-regreso:hover {
+      opacity: 1;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffb3d9;
+      border-color: #ffb3d9;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🎥 VIDEO DE FONDO -->
+  <video autoplay muted loop playsinline id="video-fondo">
+    <source src="video/ñeñe.mp4" type="video/mp4">
+    Tu navegador no soporta el video.
+  </video>
+
+  <!-- 🎵 AUDIO INVISIBLE -->
+  <audio id="audioAmor"></audio>
+
+  <!-- 💖 BOTÓN EN EL CENTRO -->
+  <div class="centrado">
+    <button class="btn-img" onclick="img()">
+      <img src="img/somoss.png" alt="Botón Somos">
+    </button>
+  </div>
+
+  <!-- 🔙 BOTÓN REGRESAR -->
+  <button class="btn-regreso" onclick="location.href='amor.html'">⟵ Regresar</button>
+
+  <!-- 🎯 SCRIPT -->
+  <script>
+    function img() {
+      const nombres = [
+        "meuno", "medos", "metres", "mecuatro",
+        "mecinco", "meseis", "mesiete", "meocho",
+        "menueve", "mediez", "meonce", "medoce"
+      ];
+      const canciones = [
+        "laclasica", "bobomenso", "cirugia", "spacesex",
+        "frances", "babyromeo", "lamirada", "mami",
+        "mienteme", "tiempo", "patatusss", "yoko"
+      ];
+
+      /* 📸 Imagen al azar */
+      const i = Math.floor(Math.random() * nombres.length);
+      const rutaImagen = `img/${nombres[i]}.jpeg`;
+      const imagen = document.createElement("img");
+      imagen.src = rutaImagen;
+      imagen.className = "imagen-flotante";
+      imagen.onerror = () => {
+        alert("No se pudo cargar la imagen: " + rutaImagen);
+        imagen.remove();
+      };
+      document.body.appendChild(imagen);
+      setTimeout(() => { imagen.remove(); }, 20000);
+
+      /* 💓 Corazones */
+      lanzarCorazones();
+
+      /* 🎶 Canción al azar */
+      const j = Math.floor(Math.random() * canciones.length);
+      const rutaCancion = `audio/${canciones[j]}.mp3`;
+      const audio = document.getElementById("audioAmor");
+      audio.pause();
+      audio.src = rutaCancion;
+      audio.load();
+      audio.play().catch(() => {
+        console.warn("Autoplay bloqueado. Usuario debe interactuar primero.");
+      });
+    }
+
+    function lanzarCorazones() {
+      for (let i = 0; i < 10; i++) {
+        const corazon = document.createElement("div");
+        corazon.className = "corazon";
+        corazon.style.left = Math.random() * 100 + "vw";
+        corazon.style.top  = (Math.random() * 50 + 50) + "vh";
+        document.body.appendChild(corazon);
+        setTimeout(() => { corazon.remove(); }, 7000);  /* ⬅️ 4000 ms → 7000 ms */
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+/* Bianca Runner - Estilo temático mexicano */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('img/cerro.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Press Start 2P', cursive;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+#hud {
+  position: absolute;
+  top: 0; left: 0; width: 100%;
+  display: flex; align-items: center;
+  padding: 10px 20px;
+  font-size: .9rem;
+  color: #fff;
+  text-shadow: 0 0 4px #000;
+  pointer-events: none;
+  z-index: 5;
+  box-sizing: border-box;
+}
+#lives { flex: 0 0 auto; }
+#score { flex: 0 0 auto; margin-left: auto; white-space: nowrap; }
+#rankTicker {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .8rem;
+  color: #9ef;
+  white-space: nowrap;
+}
+
+#overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.88);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  font-size: 1rem;
+  visibility: hidden;
+  z-index: 10;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 🔥 Imagen de Game Over grande y centrada */
+#gameOverImg {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
+}
+
+/* 🔥 Texto llamativo */
+#gameOverMsg {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 6px #ff0, 0 0 10px #f0f;
+  margin: 10px 0 16px 0;
+  line-height: 1.6;
+}
+
+/* 🔥 Botones con estilo glass y neon */
+#restartBtn,
+#homeBtnOverlay {
+  font-family: inherit;
+  font-size: .9rem;
+  padding: 12px 20px;
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 8px rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+}
+
+#restartBtn:hover,
+#homeBtnOverlay:hover {
+  transform: scale(1.07);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 12px #0ff, 0 0 18px #f0f;
+  border-color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #hud { font-size: 0.7rem; padding: 6px 8px; }
+  #overlay { font-size: 0.8rem; }
+  #gameOverImg { max-width: 280px; }
+  #gameOverMsg { font-size: 1rem; }
+}

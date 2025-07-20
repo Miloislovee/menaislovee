@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TamoWatoncita</title>
+  <link href="https://fonts.googleapis.com/css2?family=Angelia+Beauty&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body.amor {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    #video-fondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .menu-lateral {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 180px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 100px;
+      gap: 20px;
+      z-index: 10;
+    }
+
+    .boton-opcion {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 10px 15px;
+      border-radius: 15px;
+      font-size: 16px;
+      font-family: 'Angelia Beauty', cursive;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+      width: 140px;
+      text-align: center;
+    }
+
+    .boton-opcion:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .contenedor {
+      margin-left: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    .lado-izquierdo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .corazon-full {
+      width: 100%;
+      max-width: 400px;
+      animation: latir 1s infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes latir {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .dedicatoria {
+      font-family: 'Angelia Beauty', cursive;
+      font-size: 22px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .lado-derecho {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .carrusel {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border-radius: 20px;
+      z-index: 2;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      border-radius: 20px;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    /* Mini fotos expulsadas */
+    .flotador {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      pointer-events: none;
+      animation: flotar-fuera 2.5s ease-out forwards;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    @keyframes flotar-fuera {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--x), var(--y)) scale(0.7) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body class="amor">
+
+  <video autoplay muted loop playsinline id="video-fondo">
+    <source src="video/fondocora.mp4" type="video/mp4">
+    Tu navegador no soporta el video.
+  </video>
+
+  <audio id="miMusica" autoplay loop>
+    <source src="audio/heladito.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <div class="menu-lateral">
+    <a href="porque.html" class="boton-opcion">𝓜𝓲 𝓜𝓮𝓷𝓪𝓪 ❤</a>
+    <a href="us.html" class="boton-opcion">𝙩𝙠𝙢𝙢 ❤</a>
+    <a href="cancioness.html" class="boton-opcion">𝙄𝙥𝙤𝙙 ❤</a>
+    <a href="bianca.html" class="boton-opcion">𝘽𝙞𝙖𝙣𝙘𝙖 𝙂𝙖𝙢𝙚</a>
+  </div>
+
+  <div class="contenedor">
+    <div class="lado-izquierdo">
+      <img src="img/koraa.png" class="corazon-full" alt="koraa">
+      <p class="dedicatoria">NO LATE POR VIVIR, LATE PORQUE TE EXTRAÑA</p>
+    </div>
+
+    <div class="lado-derecho">
+      <div class="carrusel">
+        <img src="img/mna.jpeg" class="slide active" alt="slide-1">
+        <img src="img/chetosuno.jpeg" class="slide" alt="slide-2">
+        <img src="img/chetosdos.jpeg" class="slide" alt="slide-3">
+        <img src="img/chetostres.jpeg" class="slide" alt="slide-4">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const audioElement = document.getElementById('miMusica');
+      const playPromise = audioElement.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          document.body.addEventListener('click', () => audioElement.play(), { once: true });
+        });
+      }
+
+      const slides = document.querySelectorAll(".slide");
+      let currentIndex = 0;
+      const nombresFlotadores = ["titi", "toto", "tutu"];
+
+      function explotarDesdeBordes(slide) {
+        const carrusel = slide.parentElement;
+        const rect = carrusel.getBoundingClientRect();
+        const slideRect = slide.getBoundingClientRect();
+        const cantidad = 10;
+
+        for (let i = 0; i < cantidad; i++) {
+          const img = document.createElement("img");
+          const nombre = nombresFlotadores[Math.floor(Math.random() * nombresFlotadores.length)];
+          img.src = `img/${nombre}.png`;
+          img.classList.add("flotador");
+
+          // Determina desde qué borde explota
+          const borde = ["top", "bottom", "left", "right"][Math.floor(Math.random() * 4)];
+          let left = 0, top = 0;
+
+          if (borde === "top") {
+            left = slideRect.left + Math.random() * slideRect.width;
+            top = slideRect.top;
+          } else if (borde === "bottom") {
+            left = slideRect.left + Math.random() * slideRect.width;
+            top = slideRect.bottom;
+          } else if (borde === "left") {
+            left = slideRect.left;
+            top = slideRect.top + Math.random() * slideRect.height;
+          } else if (borde === "right") {
+            left = slideRect.right;
+            top = slideRect.top + Math.random() * slideRect.height;
+          }
+
+          // Posición absoluta en la página
+          img.style.position = "fixed";
+          img.style.left = `${left}px`;
+          img.style.top = `${top}px`;
+
+          // Movimiento hacia fuera
+          const angle = Math.random() * 2 * Math.PI;
+          const distance = 150 + Math.random() * 100;
+          const x = Math.cos(angle) * distance + "px";
+          const y = Math.sin(angle) * distance + "px";
+          img.style.setProperty('--x', x);
+          img.style.setProperty('--y', y);
+
+          document.body.appendChild(img);
+          setTimeout(() => img.remove(), 3000);
+        }
+      }
+
+      setInterval(() => {
+        slides[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add("active");
+
+        explotarDesdeBordes(slides[currentIndex]);
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>

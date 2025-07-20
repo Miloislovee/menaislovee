@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",          // o "edge", "pwa-chrome", etc.
+      "request": "launch",
+      "name": "Abrir HTML actual",
+      "file": "${file}",         // ← siempre abrirá el documento activo
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}

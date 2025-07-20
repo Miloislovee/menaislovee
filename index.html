@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menaa</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="inicio">
+    <div class="overlay">
+        <img src="img/bianca.PNG" class="corazon bianca" onclick="mostrarClave()" alt="Corazón">
+    </div>
+    <!-- Modal de contraseña personalizado -->
+    <div id="modalClave" class="modal-clave">
+        <div class="modal-contenido animate-modal">
+            <span class="cerrar-modal" id="cerrarModal">&times;</span>
+            <h2>Ingresa la clave secretita</h2>
+            <input type="password" id="inputClave" placeholder="ola narizota" autofocus />
+            <button id="btnEnviarClave">Entrar</button>
+            <div id="mensajeClave" class="mensaje-clave"></div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

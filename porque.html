@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>𝑴𝒊 𝑴𝒆𝒏𝒂𝒂 ❤</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Angelia+Beauty&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    body{
+      font-family:'Angelia Beauty',cursive;
+      color:#fff;
+      min-height:100vh;
+      background:#000;
+      text-align:center;
+      padding:40px 20px;
+      overflow-y:auto;
+    }
+
+    #video-fondo{
+      position:fixed;top:0;left:0;
+      width:100%;height:100%;
+      object-fit:cover;
+      z-index:-1;
+      pointer-events:none;
+    }
+
+    .contenedor-dedicatoria{
+      background:rgba(0,0,0,.5);
+      padding:30px 40px;
+      max-width:800px;
+      margin:0 auto;
+      border-radius:20px;
+      box-shadow:0 0 15px rgba(0,0,0,.6);
+    }
+
+    h1{
+      font-size:48px;
+      margin-bottom:25px;
+      color:#e91e63;
+      text-shadow:2px 2px 4px rgba(0,0,0,.6);
+    }
+
+    #mensaje{
+      font-size:20px;
+      line-height:1.6;
+      margin-bottom:35px;
+      text-shadow:1px 1px 3px rgba(0,0,0,.6);
+      white-space:pre-line;
+      text-align:left;
+      position:relative;
+    }
+
+    .boton-volver{
+      text-decoration:none;
+      background:#e91e63;
+      color:#fff;
+      padding:12px 30px;
+      border-radius:25px;
+      font-weight:bold;
+      font-size:20px;
+      transition:.3s;
+      display:inline-block;
+      margin-top:20px;
+    }
+
+    .boton-volver:hover{
+      background:#fff;color:#e91e63;border:2px solid #e91e63;
+    }
+
+    .cursor-dog{
+      width:24px;
+      height:24px;
+      vertical-align:middle;
+      margin-left:3px;
+      animation:blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink{
+      50%{opacity:0;}
+    }
+  </style>
+</head>
+<body>
+
+  <video autoplay muted loop playsinline id="video-fondo">
+    <source src="video/minee.mp4" type="video/mp4">
+    Tu navegador no soporta el video.
+  </video>
+
+  <audio id="miMusica" autoplay loop>
+    <source src="audio/love.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <div class="contenedor-dedicatoria">
+    <h1>𝑴𝒊 𝑴𝒆𝒏𝒂𝒂 ❤</h1>
+    <p id="mensaje"></p>
+  <a href="amor.html" class="boton-volver">⬅ muakk</a>
+
+<style>
+  .besito {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: flotar 1s ease-out forwards;
+  }
+
+  @keyframes flotar {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-50px) scale(1.2);
+    }
+  }
+</style>
+
+<script>
+  const boton = document.querySelector('.boton-volver');
+  let intervaloBesitos;
+
+  function crearBesito() {
+    const img = document.createElement('img');
+    img.src = 'img/besito.png'; // Asegúrate que el nombre sea exacto y exista
+    img.classList.add('besito');
+
+    const rect = boton.getBoundingClientRect();
+    const x = Math.random() * rect.width + rect.left;
+    const y = Math.random() * rect.height + rect.top;
+
+    img.style.left = x + 'px';
+    img.style.top = y + 'px';
+
+    document.body.appendChild(img);
+
+    setTimeout(() => {
+      img.remove();
+    }, 1000); // Desaparece después de 1s
+  }
+
+  boton.addEventListener('mouseenter', () => {
+    if (!intervaloBesitos) {
+      intervaloBesitos = setInterval(crearBesito, 100); // 100ms = 10 besitos por segundo
+    }
+  });
+
+  boton.addEventListener('mouseleave', () => {
+    clearInterval(intervaloBesitos);
+    intervaloBesitos = null;
+  });
+</script>
+
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('miMusica');
+      const intento = audio.play();
+      if (intento !== undefined) {
+        intento.catch(() => {
+          document.body.addEventListener('click', () => audio.play(), { once:true });
+        });
+      }
+      escribirTexto();
+    });
+
+    const texto = `𝙋𝙖𝙧𝙖 𝙢𝙞́, 𝙓𝙞𝙢𝙚𝙣𝙖 𝙚𝙨 𝙡𝙖 𝙥𝙚𝙧𝙨𝙤𝙣𝙖 𝙢𝙖́𝙨 𝙡𝙞𝙣𝙙𝙖 𝙦𝙪𝙚 𝙝𝙚 𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤, 𝙮 𝙣𝙤 𝙝𝙖𝙗𝙡𝙤 𝙨𝙤𝙡𝙤 𝙙𝙚 𝙡𝙤 𝙙𝙚 𝙖𝙛𝙪𝙚𝙧𝙖, 𝙨𝙞𝙣𝙤 𝙙𝙚 𝙩𝙤𝙙𝙤 𝙡𝙤 𝙦𝙪𝙚 𝙡𝙡𝙚𝙫𝙖 𝙙𝙚𝙣𝙩𝙧𝙤 𝙙𝙚 𝙚𝙨𝙤𝙨 𝟭.𝟲𝟯 𝙙𝙚 𝙥𝙪𝙧𝙤 𝙘𝙤𝙧𝙖𝙯𝙤́𝙣 💕, 𝙏𝙞𝙚𝙣𝙚 𝙪𝙣𝙖 𝙥𝙚𝙧𝙨𝙤𝙣𝙖𝙡𝙞𝙙𝙖𝙙 𝙦𝙪𝙚 𝙣𝙤 𝙘𝙪𝙖𝙡𝙦𝙪𝙞𝙚𝙧𝙖 𝙩𝙞𝙚𝙣𝙚, 𝙮 𝙡𝙤 𝙙𝙞𝙜𝙤 𝙚𝙣𝙨𝙚𝙧𝙞𝙤, 𝙝𝙚 𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤 𝙢𝙪𝙘𝙝𝙖 𝙜𝙚𝙣𝙩𝙚, 𝙥𝙚𝙧𝙤 𝙣𝙖𝙙𝙞𝙚 𝙘𝙤𝙢𝙤 𝙚𝙡𝙡𝙖 💘.
+
+𝘿𝙚𝙨𝙙𝙚 𝙦𝙪𝙚 𝙥𝙖𝙨𝙤 𝙩𝙞𝙚𝙢𝙥𝙤 𝙘𝙤𝙣 𝙚𝙡𝙡𝙖, 𝙢𝙞 𝙫𝙞𝙙𝙖 𝙨𝙚 𝙨𝙞𝙚𝙣𝙩𝙚 𝙢𝙖́𝙨 𝙘𝙝𝙞𝙣𝙜𝙤𝙣𝙖, 𝙢𝙖́𝙨 𝘽𝙐𝙀𝙉𝘼𝘼, 𝙘𝙤𝙢𝙤 𝙨𝙞 𝙡𝙖 𝙫𝙞𝙙𝙖 𝙢𝙚 𝙝𝙪𝙗𝙞𝙚𝙧𝙖 𝙝𝙚𝙘𝙝𝙤 𝙪𝙣 𝙪𝙥𝙜𝙧𝙖𝙙𝙚 𝙨𝙞𝙣 𝙥𝙚𝙙𝙞𝙧𝙡𝙤 ♡
+
+𝙀𝙨𝙤𝙨 𝙤𝙟𝙞𝙩𝙤𝙨 𝙘𝙖𝙛𝙚́ 𝙢𝙚 𝙩𝙞𝙚𝙣𝙚𝙣 𝙛𝙞𝙘𝙝𝙖𝙙𝙤, 𝙖𝙪𝙣𝙦 𝙚𝙡𝙡𝙖 𝙩𝙚𝙣𝙜𝙖 𝙚𝙨𝙩𝙧𝙖𝙗𝙞𝙨𝙢𝙤 𝙨𝙤𝙣 𝙢𝙪𝙮 𝙡𝙞𝙣𝙙𝙤𝙨𝙨, 𝙖𝙢𝙤𝙤 𝙙𝙢𝙖𝙨𝙞𝙖𝙙𝙤 𝙨𝙪𝙨 𝙤𝙟𝙤𝙨 𝙘𝙖𝙛𝙚́, 𝙮 𝙚𝙨𝙖 𝙨𝙤𝙣𝙧𝙞𝙨𝙖... 𝙪𝙛𝙛𝙛, 𝙣𝙪𝙣𝙘𝙖 𝙙𝙚𝙗𝙚 𝙙𝙚𝙟𝙖𝙧 𝙙𝙚 𝙨𝙤𝙣𝙧𝙚𝙞́𝙧 𝙮𝙖 𝙦 𝙖𝙨𝙞́ 𝙚𝙡 𝙢𝙪𝙣𝙙𝙤 𝙨𝙚 𝙫𝙚 𝙢𝙚𝙣𝙤𝙨 𝙟𝙤𝙙𝙞𝙙𝙤 𝙘𝙪𝙖𝙣𝙙𝙤 𝙡𝙤 𝙝𝙖𝙘𝙚, 𝙮 𝙨𝙪𝙨 𝙡𝙖𝙗𝙞𝙤𝙨... 𝙣𝙖𝙝𝙝, 𝙚𝙨𝙤𝙨 𝙣𝙤 𝙚𝙨𝙩𝙖́𝙣 𝙝𝙚𝙘𝙝𝙤𝙨 𝙥𝙖' 𝙙𝙚𝙘𝙞𝙧 𝙥𝙖𝙡𝙖𝙗𝙧𝙖𝙨, 𝙚𝙨𝙩𝙖́𝙣 𝙥𝙖' 𝙚𝙣𝙫𝙞𝙘𝙞𝙖𝙧𝙨𝙚 🍫❤️.
+
+𝘾𝙤𝙣 𝙚𝙡𝙡𝙖 𝙝𝙚 𝙖𝙥𝙧𝙚𝙣𝙙𝙞𝙙𝙤 𝙢𝙪𝙘𝙝𝙖𝙨 𝙘𝙤𝙨𝙖𝙨, 𝙮 𝙨𝙚́ 𝙦𝙪𝙚 𝙩𝙖𝙢𝙗𝙞𝙚́𝙣 𝙡𝙚 𝙝𝙚 𝙚𝙣𝙨𝙚𝙣̃𝙖𝙙𝙤 𝙪𝙣𝙖 𝙦𝙪𝙚 𝙤𝙩𝙧𝙖 𝙘𝙤𝙨𝙖 (𝙘𝙤𝙢𝙤 𝙫𝙚𝙧𝙣𝙤𝙨 𝙚𝙡 𝙖𝙡𝙢𝙖 𝙅𝘼𝙅𝘼𝙅𝘼𝙅𝙎𝙆𝙎), 𝙦𝙪𝙞𝙚𝙧𝙤 𝙥𝙖𝙨𝙖𝙧 𝙩𝙤𝙙𝙤𝙨 𝙢𝙞𝙨 𝙙𝙞́𝙖𝙨 𝙘𝙤𝙣 𝙚𝙡𝙡𝙖, 𝙨𝙞𝙣 𝙞𝙢𝙥𝙤𝙧𝙩𝙖𝙧 𝙨𝙞 𝙖𝙡𝙜𝙪́𝙣 𝙙𝙞́𝙖 𝙙𝙞𝙘𝙚 𝙦𝙪𝙚 𝙚𝙨 𝙜𝙪𝙖𝙩𝙚𝙢𝙖𝙡𝙩𝙚𝙘𝙖 𝙅𝘼𝙅𝘼𝙅𝘼𝙅, 𝙢𝙚𝙣𝙩𝙞𝙧𝙖𝙖, 𝙚𝙡𝙡𝙖 𝙚𝙨 𝙢𝙞 𝙈𝙚𝙭𝙞𝙢𝙚𝙣𝙖🍪, 𝙡𝙖 𝙖𝙢𝙤 𝙩𝙖𝙣𝙩𝙤, 𝙩𝙖𝙣𝙩𝙤, 𝙩𝙖𝙣𝙩𝙤 𝙦𝙪𝙚 𝙥𝙚𝙣𝙨𝙖𝙧 𝙚𝙣 𝙚𝙡𝙡𝙖 𝙢𝙚 𝙘𝙖𝙢𝙗𝙞𝙖 𝙚𝙡 𝙙𝙞́𝙖, 𝙢𝙚 𝙙𝙖 𝙥𝙖𝙯, 𝙢𝙚 𝙝𝙖𝙘𝙚 𝙧𝙚𝙞́𝙧 💘, 𝙋𝙤𝙧 𝙩𝙤𝙙𝙤 𝙡𝙤 𝙦𝙪𝙚 𝙘𝙤𝙢𝙥𝙖𝙧𝙩𝙞𝙢𝙤𝙨, 𝙮 𝙥𝙤𝙧𝙦𝙪𝙚 𝙩𝙤𝙙𝙤 𝙛𝙡𝙪𝙮𝙚 𝙗𝙤𝙣𝙞𝙩𝙤 𝙘𝙪𝙖𝙣𝙙𝙤 𝙚𝙨𝙩𝙖𝙢𝙤𝙨 𝙟𝙪𝙣𝙩𝙤𝙨 🌷☁️
+
+𝙉𝙤 𝙣𝙚𝙘𝙚𝙨𝙞𝙩𝙤 𝙙𝙚𝙘𝙞𝙧 𝙢𝙪𝙘𝙝𝙤, 𝙥𝙚𝙧𝙤𝙤... 𝙏𝙐𝙔𝙔𝙊𝙊𝙋, 𝙖𝙢𝙤𝙧, 𝙧𝙞𝙨𝙖𝙨, 𝙖𝙪𝙩𝙞𝙨𝙢𝙤 𝙘𝙤𝙢𝙥𝙖𝙧𝙩𝙞𝙙𝙤, 𝙙𝙤𝙨 𝙥𝙚𝙧𝙧𝙞𝙩𝙤𝙨 𝙦𝙪𝙚 𝙨𝙚 𝙡𝙡𝙖𝙢𝙚𝙣 𝘾𝙪𝙘𝙝𝙖𝙧𝙖 𝙮 𝘾𝙚𝙣𝙞𝙘𝙚𝙧𝙤 🐶🐶(𝙣𝙚𝙜𝙧𝙤 𝙘𝙤𝙢𝙤 𝙥𝙖𝙥𝙞 𝙮 𝙗𝙡𝙖𝙣𝙘𝙤 𝙘𝙤𝙢𝙤 𝙢𝙖𝙢𝙞), 𝙛𝙪𝙡𝙡 𝙢𝙤𝙣𝙤𝙜𝙖𝙢𝙞𝙖 𝙮 𝙪𝙣𝙖𝙨 𝙗𝙪𝙚𝙣𝙖𝙨 𝙧𝙚𝙫𝙤𝙡𝙘𝙖𝙙𝙖𝙨, 𝙚𝙨 𝙩𝙤𝙙𝙤 𝙡𝙤 𝙦𝙪𝙚 𝙖𝙣𝙝𝙚𝙡𝙤, 𝙝𝙖𝙨𝙩𝙖 𝙩𝙚𝙣𝙚𝙧 𝙣𝙪𝙚𝙨𝙩𝙧𝙖 𝙥𝙧𝙤𝙥𝙞𝙖 𝙣𝙪𝙘𝙞𝙩𝙖 𝙟𝙪𝙣𝙩𝙤𝙨 💕, 𝙋𝙤𝙧𝙦𝙪𝙚 𝙚𝙧𝙚𝙨 𝙩𝙪́, 𝙮 𝙣𝙤 𝙦𝙪𝙞𝙚𝙧𝙤 𝙖 𝙣𝙖𝙙𝙞𝙚 𝙢𝙖́𝙨.
+`;
+
+    const cont = document.getElementById('mensaje');
+    const cursor = document.createElement('img');
+    cursor.src = 'img/bianca.png';
+    cursor.alt = 'perrito';
+    cursor.className = 'cursor-dog';
+    cont.appendChild(cursor);
+
+    const chars = [...texto];
+    let i = 0;
+
+    function escribirTexto(){
+      if(i < chars.length){
+        const ch = chars[i++];
+        if(ch === '\n'){
+          cont.insertBefore(document.createElement('br'), cursor);
+        }else{
+          cont.insertBefore(document.createTextNode(ch), cursor);
+        }
+        setTimeout(escribirTexto, 30);
+      }else{
+        cursor.remove();
+      }
+    }
+  </script>
+</body>
+</html>
